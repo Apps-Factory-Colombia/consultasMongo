@@ -1,10 +1,10 @@
 
 // 1. Colección: medicos
 
-// Insertar médicos (en caso de no haberlo hecho ya)
+// Insertar médicos
 db.medicos.insertMany([
     {
-      nombre: "Andrés Torres",
+      nombre: "Andres Torres",
       cedulaProfesional: "123456",
       correo: "andres.torres@example.com",
       especialidad: "Oftalmología",
@@ -47,7 +47,6 @@ db.medicos.insertMany([
   db.medicos.findOne({ _id: ObjectId("67017561f972dd16b843e0e6") });
   
   // Obtener un médico por nombre
-  const medicoNombre = "Andrés Torres"; // Reemplaza con el nombre real
   db.medicos.findOne({ nombre: "Andres Torres" });
   
   // Eliminar un médico por su _id
@@ -57,7 +56,7 @@ db.medicos.insertMany([
   
   // 2. Colección: pacientes
   
-  // Insertar pacientes (en caso de no haberlo hecho ya)
+  // Insertar pacientes
   db.paciente.insertMany([
     {
       nombre: "Claudia Lopez",
@@ -72,7 +71,7 @@ db.medicos.insertMany([
       email: "javier.torres@example.com"
     },
     {
-      nombre: "Ana Beltrán",
+      nombre: "Ana Beltran",
       edad: 29,
       telefono: "555-1122",
       email: "ana.beltran@example.com"
@@ -98,7 +97,6 @@ db.medicos.insertMany([
   db.paciente.findOne({ _id: ObjectId("67017583f972dd16b843e0e9") });
   
   // Obtener un paciente por nombre
-  const pacienteNombre = "Claudia López"; // Reemplaza con el nombre real
   db.paciente.findOne({ nombre: "Claudia Lopez" });
   
   // Eliminar un paciente por su _id
