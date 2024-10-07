@@ -105,7 +105,36 @@ db.medicos.insertMany([
   
   
   // 3. Colección: citas
-  
+  db.getCollection(
+  'citasDesnormalizadas'
+).aggregate(
+  [
+    {
+      $group: {
+        _id: '$medico._id',
+        totalCitas: { $sum: 1 },
+        medicoNombre: { $first: '$medico.nombre' }
+      }
+    }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
+
+db.getCollection(
+  'citasDesnormalizadas'
+).aggregate(
+  [
+    {
+      $group: {
+        _id: '$paciente._id',
+        nombre: { $first: '$paciente.nombre' },
+        totalCitas: { $sum: 1 }
+      }
+    }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
+
   db.citas.insertMany([
     {
       fecha: new Date("2024-10-10T10:00:00Z")
