@@ -2,6 +2,7 @@
 // 1. Colección: medicos
 
 // Insertar médicos
+
 db.medicos.insertMany([
     {
       nombre: "Andres Torres",
@@ -52,7 +53,18 @@ db.medicos.insertMany([
   // Eliminar un médico por su _id
   db.medicos.deleteOne({ _id: ObjectId("67017561f972dd16b843e0e6") });
   
-  
+  db.getCollection('medicos').aggregate(
+  [
+    {
+      $group: {
+        _id: '$especialidad',
+        cantidad: { $sum: 1 }
+      }
+    }
+  ],
+  { maxTimeMS: 60000, allowDiskUse: true }
+);
+
   
   // 2. Colección: pacientes
   
